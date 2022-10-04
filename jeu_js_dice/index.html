@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,47 @@
     <link rel="stylesheet" href="style.css"/> 
 </head>
 <body>
+    <header>
+        <img class="icon" src="./img/plus.png" />
+        <div class="labelNewGame">Nouvelle Partie</div>
+    </header>
+    <main>
+        <section class="container">
+            <div class="player">
+                <div class="labelPlayer">PLAYER 1</div>
+                <div class="globalScore1">00</div>    
+            </div>
+            <img class="icon j1" src="./img/red_circle.png" />
+            <img class="dice" src="./img/dice_6.png" />        
+            <img class="icon j2" src="./img/red_circle.png" />
+            <div class="player">
+                <div class="labelPlayer">PLAYER 2</div>
+                <div class="globalScore2">00</div>    
+            </div>
+        </section>
+    </main>
+    
+    <footer> 
+        <div class="tempScore">
+            <div class="labelCurrent">CURRENT</div>
+            <div class="valueTempScore1">00</div> 
+        </div>
+        <div class="actionButton">
+            <div class="rollDice">
+                <img class="icon" src="./img/rotating_arrows.png" />
+                <div class="labelRollDice">ROLL DICE</div>
+            </div>
+            <div class="hold">
+                <img class="icon" src="./img/fleche_bas.png" />
+                <div class="labelHold">HOLD</div>
+            </div>
+        </div>
+        <div class="tempScore">
+            <div class="labelCurrent">CURRENT</div>
+            <div class="valueTempScore2">00</div> 
+        </div>    
+    </footer>
+    
     <script src="script.js"></script>
 </body>
 </html>

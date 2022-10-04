@@ -5,3 +5,93 @@ body {
     border: 10px rgb(217, 187, 187) solid;
     padding: 20px;
 }
+
+img.icon {
+    width: 30px;
+    height: 30px;
+}
+
+img.icon.j2 {
+    visibility: hidden;
+}
+
+img.dice {
+    width: 60px;
+    height: 60px;
+    margin-top: 55px;
+}
+
+header {
+    display:flex;
+    justify-content: center;
+}
+
+header .labelNewGame {
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+section.container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+section.container .player{
+    font-size:50px;
+    text-align: center;
+    color: red
+}
+
+section.container .player .labelPlayer {
+    color: black;
+    font-size:25px;
+}
+
+footer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+footer .tempScore {
+    background-color: red;
+    text-align: center;
+    padding: 15px;
+}
+
+footer .tempScore .valueTempScore1 {
+    font-size: 25px;
+    color: white;
+}
+
+footer .tempScore .valueTempScore2 {
+    font-size: 25px;
+    color: white;
+}
+
+footer .actionButton {
+    /*display: flex;*/
+    margin-top: 10px;
+    text-align: center;
+}
+
+footer .actionButton .rollDice {
+    margin-bottom: 25px;
+    display: flex;
+}
+
+footer .actionButton .rollDice .labelRollDice {
+    margin-left: 15px;
+    margin-top: 5px;    
+}
+
+footer .actionButton .hold {
+    display: flex;
+}
+
+footer .actionButton .hold .labelHold {
+    margin-left: 15px;
+    margin-top: 5px;
+}
