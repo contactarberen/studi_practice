@@ -1,4 +1,5 @@
 let newGame=document.querySelector('.newGame');
+const winningScore = 100;
 
 /**
  * Returns a random integer between min (inclusive) and max (inclusive).
@@ -9,80 +10,87 @@ let newGame=document.querySelector('.newGame');
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function initValues() {
+    globScore1 = document.querySelector('div.globalScore1');
+    globScore2 = document.querySelector('div.globalScore2');
+    tempScore1 = document.querySelector('div.valueTempScore1');
+    tempScore2 = document.querySelector('div.valueTempScore2');
+    globScore1.innerText = 0;
+    globScore2.innerText = 0;
+    tempScore1.innerText = 0;
+    tempScore2.innerText = 0;
+}
+
 newGame.addEventListener("click", function(){
-    let globalScore1 = 0;
-    let globalScore2 = 0;
-    let tempScore1 = 0;
-    let tempScore2 = 0;
     let j1_playing = true;
+    initValues();
     let htmlGlobalScore1 = document.querySelector('div.globalScore1');
     let htmlGlobalScore2 = document.querySelector('div.globalScore2');
     let htmlValueTempScore1 = document.querySelector('div.valueTempScore1');
     let htmlValueTempScore2 = document.querySelector('div.valueTempScore2');
-
+    let icon_j1_playing = document.querySelector('img.icon.j1');
+    let icon_j2_playing = document.querySelector('img.icon.j2');
+    icon_j2_playing.classList.add("hidden");
     let rollDice = document.querySelector('.rollDice');
     let hold = document.querySelector('.hold');
-    
-    function affect_dice_value(player) {
-
-    }
+        
     
     rollDice.addEventListener("click", function(){
-        var dice_value = dice_value = getRandomInt(1,6);
+        var dice_value = getRandomInt(1,6);
         if (j1_playing == true) {
-            if (globalScore1 >= 100) {
+            if (parseInt(htmlGlobalScore1.innerText) >= winningScore) {
                 alert("FELICITATIONS: JOUEUR 1 GAGNE LA PARTIE");
             }
             if (dice_value == 1) {
                 j1_playing = false;
-                tempScore1 = 0;
-                htmlValueTempScore1.innerText = tempScore1;
+                htmlValueTempScore1.innerText = 0;
+                icon_j1_playing.classList.add("hidden");
+                icon_j2_playing.classList.remove("hidden");
             }
             else {
-                tempScore1 += dice_value;
-                htmlValueTempScore1.innerText = tempScore1;
+                htmlValueTempScore1.innerText = parseInt(htmlValueTempScore1.innerText) + dice_value;
 
             }
 
         }
         else {
-            if (globalScore1 >= 100) {
-                alert("FELICITATIONS: JOUEUR 1 GAGNE LA PARTIE");
+            if (parseInt(htmlGlobalScore2.innerText) >= winningScore) {
+                alert("FELICITATIONS: JOUEUR 2 GAGNE LA PARTIE");
             }
             if (dice_value == 1) {
                 j1_playing = true;
-                tempScore2 = 0;
-                htmlValueTempScore2.innerText = tempScore2;
+                htmlValueTempScore2.innerText = 0;
+                icon_j1_playing.classList.remove("hidden");
+                icon_j2_playing.classList.add("hidden");
             }
             else {
-                tempScore2 += dice_value;
-                htmlValueTempScore2.innerText = tempScore2;
+                htmlValueTempScore2.innerText = parseInt(htmlValueTempScore2.innerText) + dice_value;
             }
         }
-        console.log("j1_temp "+tempScore1)
-        console.log("j2_temp "+tempScore2)
-        console.log("")
-        
-            
     });
     
     hold.addEventListener("click", function(){
         if (j1_playing == true) {
-            globalScore1 += tempScore1;
-            htmlGlobalScore1.innerText = globalScore1;
-            tempScore1 = 0;
-            htmlValueTempScore1.innerText = tempScore1;
+            htmlGlobalScore1.innerText = parseInt(htmlGlobalScore1.innerText) + 
+                                            parseInt(htmlValueTempScore1.innerText);
+            htmlValueTempScore1.innerText = 0;
+            if (parseInt(htmlGlobalScore1.innerText) >= winningScore) {
+                alert("FELICITATIONS: JOUEUR 1 GAGNE LA PARTIE");
+            }
             j1_playing = false;
+            icon_j1_playing.classList.add("hidden");
+            icon_j2_playing.classList.remove("hidden");
         }
         else {
-            globalScore2 += tempScore2;
-            htmlGlobalScore2.innerText = globalScore2;
-            tempScore2 = 0;
-            htmlValueTempScore2.innerText = tempScore2;
+            htmlGlobalScore2.innerText = parseInt(htmlGlobalScore2.innerText) 
+                                            + parseInt(htmlValueTempScore2.innerText);
+            htmlValueTempScore2.innerText = 0;
+            if (parseInt(htmlGlobalScore2.innerText) >= winningScore) {
+                alert("FELICITATIONS: JOUEUR 2 GAGNE LA PARTIE");
+            }
             j1_playing = true;
+            icon_j1_playing.classList.remove("hidden");
+            icon_j2_playing.classList.add("hidden");
         }
-        console.log("j1_global_score "+globalScore1)
-        console.log("j2_global_score "+globalScore2)
-        console.log("")
-    });       
+     });       
 });
