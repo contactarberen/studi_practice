@@ -21,12 +21,16 @@ img.dice {
     margin-top: 55px;
 }
 
-header {
+.newGame {
     display:flex;
     justify-content: center;
 }
 
-header .labelNewGame {
+.newGame:hover{
+    cursor: pointer;
+}
+
+.newGame .labelNewGame {
     text-align: center;
     margin-top: 5px;
     margin-left: 10px;
@@ -80,6 +84,7 @@ footer .actionButton {
 footer .actionButton .rollDice {
     margin-bottom: 25px;
     display: flex;
+    cursor: pointer;
 }
 
 footer .actionButton .rollDice .labelRollDice {
@@ -89,6 +94,7 @@ footer .actionButton .rollDice .labelRollDice {
 
 footer .actionButton .hold {
     display: flex;
+    cursor: pointer;
 }
 
 footer .actionButton .hold .labelHold {
