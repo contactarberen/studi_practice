@@ -92,6 +92,11 @@ footer .actionButton .rollDice {
     cursor: pointer;
 }
 
+footer .actionButton .rollDice.grayed {
+    cursor: default;
+    opacity: 0.5;
+}
+
 footer .actionButton .rollDice .labelRollDice {
     margin-left: 15px;
     margin-top: 5px;    
