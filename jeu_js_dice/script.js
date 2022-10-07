@@ -1,6 +1,6 @@
 let newGame=document.querySelector('.newGame');
 let rollDice = document.querySelector('.rollDice');
-const winningScore = 20;
+const winningScore = 100;
 
 let j1_playing = true;
 let htmlGlobalScore1 = document.querySelector('div.globalScore1');
@@ -9,8 +9,6 @@ let htmlValueTempScore1 = document.querySelector('div.valueTempScore1');
 let htmlValueTempScore2 = document.querySelector('div.valueTempScore2');
 let icon_j1_playing = document.querySelector('img.icon.j1');
 let icon_j2_playing = document.querySelector('img.icon.j2');
-icon_j2_playing.classList.add("hidden");
-
 let hold = document.querySelector('.hold');
 const music_next = new Audio('./audio/son_verre_passe_tour.mp3');
 const music_winner = new Audio('./audio/son_victoire.mp3');
@@ -25,6 +23,7 @@ const music_winner = new Audio('./audio/son_victoire.mp3');
 }
 
 function initValues() {
+    j1_playing = true;
     globScore1 = document.querySelector('div.globalScore1');
     globScore2 = document.querySelector('div.globalScore2');
     tempScore1 = document.querySelector('div.valueTempScore1');
@@ -34,6 +33,8 @@ function initValues() {
     tempScore1.innerText = 0;
     tempScore2.innerText = 0;
     rollDice.classList.remove("grayed");
+    icon_j1_playing.classList.remove("hidden");
+    icon_j2_playing.classList.add("hidden");
 }
 
 function playerWin(player) {
@@ -50,8 +51,12 @@ function responseClickRollDice () {
     image_dice.src = "./img/animation_de.gif"
     const music = new Audio('./audio/son_lancer_de.mp3');
     music.play();
+    rollDice.removeEventListener("click",responseClickRollDice);
+    hold.removeEventListener("click",responseClickHold);
 
     setTimeout(function() {
+        rollDice.addEventListener("click",responseClickRollDice);
+        hold.addEventListener("click",responseClickHold);
         image_dice.src = './img/dice_'+dice_value+'.png';
         music.pause();
         if (j1_playing == true) {
